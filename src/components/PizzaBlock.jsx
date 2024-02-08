@@ -1,25 +1,40 @@
-export default function Component(props) {
+import MySelect from "./UI/MySelect"
+
+const PizzaSizes = ({sizes}) => {
+    const variantsSizes = sizes.map((size, index)=>{ return {name:`${size} см.`, id:index}})
+    return <MySelect variants={variantsSizes}/>
+}
+
+const PizzaTypes = ({types}) => {
+
+    const listNamesTypes = ['тонкое', 'традицинное']
+    
+    const variatsTypes = types.map(
+        (typeNumber, index ) => { 
+            return { name:listNamesTypes[typeNumber], id:index } 
+        }
+    )
+
+    return <MySelect variants={variatsTypes}/>
+}
+
+
+export default function Component({data}) {
+    const {imageUrl, title, sizes, price, types } = data
     return(
     <div class="pizza-block">
             <img
             class="pizza-block__image"
-            src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+            src={imageUrl}
             alt="Pizza"
             />
-            <h4 class="pizza-block__title">{props.title}</h4>
+            <h4 class="pizza-block__title">{title}</h4>
             <div class="pizza-block__selector">
-                <ul>
-                    <li class="active">тонкое</li>
-                    <li>традиционное</li>
-                </ul>
-                <ul>
-                    <li class="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                </ul>
+                <PizzaTypes types={types} />
+                <PizzaSizes sizes={sizes} />
             </div>
             <div class="pizza-block__bottom">
-                <div class="pizza-block__price">от {props.price} ₽</div>
+                <div class="pizza-block__price">от {price} ₽</div>
                 <div class="button button--outline button--add">
                     <svg
                     width="12"

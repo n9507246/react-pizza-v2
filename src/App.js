@@ -4,6 +4,8 @@ import Categories from './components/Categories'
 import Sort from './components/Sort'
 import PizzaBlock from'./components/PizzaBlock'
 
+import data from './data'
+
 function App() {
   return (
    <>
@@ -12,18 +14,17 @@ function App() {
       <div class="content">
         <div class="container">
           <div class="content__top">
-            <Categories/>
+            <Categories categoriesList={data.categories}/>
             <Sort/>
           </div>
           <h2 class="content__title">Все пиццы</h2>
           <div class="content__items">
-            <PizzaBlock title="Мексиканская" price='540'/>
-            <PizzaBlock title="Четыре сезона" price='310'/>
-            <PizzaBlock title="Сырная" price='450'/>
-            <PizzaBlock title="Перепони" price='390'/>
-            <PizzaBlock title="Чизбургер-пицца" price='740'/>
-            {/* <PizzaBlock title="Мексиканская" price='540'/> */}
-
+            {
+              data.pizzas.map( pizzaData => 
+                <PizzaBlock data={pizzaData} />    
+              )
+            }
+            
           </div>
         </div>
       </div>

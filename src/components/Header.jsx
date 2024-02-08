@@ -1,10 +1,12 @@
+import logoSVG from '../assets/img/pizza-logo.svg'
+
 export default function Component (){
     return(
         <>
             <div class="header">
                 <div class="container">
                 <div class="header__logo">
-                    <img width="38" src="./img/pizza-logo.svg" alt="Pizza logo" />
+                    <img width="38" src={logoSVG} alt="Pizza logo" />
                     <div>
                     <h1>React Pizza</h1>
                     <p>самая вкусная пицца во вселенной</p>
