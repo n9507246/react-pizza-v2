@@ -1,9 +1,17 @@
-import MySelect from "./UI/MySelect"
+import { useState } from "react"
+import CustomSelect from "./UI/CustomSelect"
 
-export default function Caregories ({categoriesList}){  
+export default function Caregories({categoriesList}){  
+  
+  const [currentCategory, setCurrentCategory] = useState(categoriesList[0])
+  
   return (
     <div class="categories">
-      <MySelect variants={categoriesList}/>
+      <CustomSelect 
+        listOfVariants={categoriesList} 
+        currentVariant={currentCategory}
+        setVariant={setCurrentCategory}
+      />
     </div>
   )
 }
