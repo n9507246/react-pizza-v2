@@ -1,35 +1,49 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import CustomSelect from "./UI/CustomSelect"
+import { gsap } from 'gsap';
+
+//TODO: требует рефакторинг
+
+function SvgArrow({isOpen}){
+    const svgArrow = useRef(null);
+
+    const animationClose = { duration: 0.2, rotation: 0, transformOrigin: 'center', repeat: 0, ease: 'linear'}
+    const animationOpen = { duration: 0.2, rotation: 90, transformOrigin: 'center', repeat: 0, ease: 'linear'}
+
+    if(isOpen) gsap.to(svgArrow.current, animationOpen)
+    else gsap.to(svgArrow.current, animationClose)
+ 
+    return( 
+        <svg ref={svgArrow} width="30" height="18"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+        </svg>
+    )
+}
 
 function SortSelector({ selectedSort, children }){
-    const [openOptions, setOpenOprions ] = useState(true)
+    const [openOptions, setOpenOptions ] = useState(false)
+
     return(
-        <div onClick={()=>{setOpenOprions(!openOptions)}} className="sort">
+        <div onClick={() => setOpenOptions(!openOptions)} className="sort">
             <div className="sort__label">
-                <svg
-                width="10"
-                height="6"
-                viewBox="0 0 10 6"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                >
-                <path
-                    d="M10 5C10 5.16927 9.93815 5.31576 9.81445 5.43945C9.69075 5.56315 9.54427 5.625 9.375 5.625H0.625C0.455729 5.625 0.309245 5.56315 0.185547 5.43945C0.061849 5.31576 0 5.16927 0 5C0 4.83073 0.061849 4.68424 0.185547 4.56055L4.56055 0.185547C4.68424 0.061849 4.83073 0 5 0C5.16927 0 5.31576 0.061849 5.43945 0.185547L9.81445 4.56055C9.93815 4.68424 10 4.83073 10 5Z"
-                    fill="#2C2C2C"
-                />
-                </svg>
+                <SvgArrow isOpen={openOptions}/>
                 <b>Сортировка по:</b>
                 <span>{selectedSort.name}</span>
             </div>
-                { openOptions && children}
+                { openOptions && children }
         </div>
     )
 }
 
 function SortOptions( {sortBy, selectedSort, setSort}){
-    
+    const elementRef = useRef(null);
+
+    useEffect(() => {
+      gsap.to(elementRef.current,{duration: 0.15, height:"155", opacity:1, ease: 'linear'});
+    }, []);
+
     return( 
-        <div className="sort__popup">
+        <div ref={elementRef} className="sort__popup">
                 <CustomSelect 
                 listOfVariants={sortBy} 
                 currentVariant={selectedSort}
@@ -46,7 +60,7 @@ export default function Component() {
         {name:'цене', id: 1},
         {name:'алфавиту', id:2}
     ]
-    
+
     const [selectedSort, setSelectedSort] = useState(SortByList[0])
 
     return(
