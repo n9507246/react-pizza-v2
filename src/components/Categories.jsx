@@ -6,7 +6,7 @@ export default function Caregories({categoriesList}){
   const [currentCategory, setCurrentCategory] = useState(categoriesList[0])
   
   return (
-    <div class="categories">
+    <div className="categories">
       <CustomSelect 
         listOfVariants={categoriesList} 
         currentVariant={currentCategory}

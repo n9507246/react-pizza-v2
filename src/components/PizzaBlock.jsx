@@ -22,20 +22,20 @@ const PizzaTypes = ({types}) => {
 export default function Component({data}) {
     const {imageUrl, title, sizes, price, types } = data
     return(
-    <div class="pizza-block">
+    <div className="pizza-block">
             <img
-            class="pizza-block__image"
+            className="pizza-block__image"
             src={imageUrl}
             alt="Pizza"
             />
-            <h4 class="pizza-block__title">{title}</h4>
-            <div class="pizza-block__selector">
+            <h4 className="pizza-block__title">{title}</h4>
+            <div className="pizza-block__selector">
                 <PizzaTypes types={types} />
                 <PizzaSizes sizes={sizes} />
             </div>
-            <div class="pizza-block__bottom">
-                <div class="pizza-block__price">от {price} ₽</div>
-                <div class="button button--outline button--add">
+            <div className="pizza-block__bottom">
+                <div className="pizza-block__price">от {price} ₽</div>
+                <div className="button button--outline button--add">
                     <svg
                     width="12"
                     height="12"

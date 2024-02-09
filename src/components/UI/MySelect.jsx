@@ -14,11 +14,11 @@ import { useState } from "react"
 
         <ul>
             <li>vatiant1</li>
-            <li class='active'>vatiant2</li>
+            <li className='active'>vatiant2</li>
             <li>vatiant3</li>
         </ul>
         
-        По умолчанию class='active' первый <li>.
+        По умолчанию className='active' первый <li>.
         На каждом <li> весит слушатель события нажатия который 
         переключает класс active на нажатый элемент.
 
