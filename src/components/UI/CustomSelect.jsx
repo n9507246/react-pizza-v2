@@ -34,7 +34,9 @@ import { useState } from "react"
 function Vatiant(props){
     
     const selectVariant = (props) => {
-        if(props.selectVariant) props.selectVariant({name:props.name, id:props.id})
+        // console.log('p', {name:props.variant.name, id:props.variant.id})
+        
+        if(props.selectVariant) props.selectVariant({name:props.variant.name, id:props.variant.id})
         else console.error("Error component </CustomSelect>. Define props setVariant for change current variant.")
     }
 
@@ -43,7 +45,7 @@ function Vatiant(props){
             onClick={()=>{selectVariant(props)}} 
             className={props.isSelect === true ? 'active' : ''}
         >
-            {props.name}
+            {props.variant.name}
         </li>
     )
 }
@@ -53,7 +55,8 @@ export default function CustomSelect({listOfVariants, currentVariant=listOfVaria
         <ul>
             {
                 listOfVariants.map((variant, index) =>
-                    <Vatiant name={variant.name}
+                    <Vatiant 
+                        variant={variant}
                         isSelect={currentVariant.name === variant.name}
                         selectVariant={setVariant}
                         key={variant.id} />
