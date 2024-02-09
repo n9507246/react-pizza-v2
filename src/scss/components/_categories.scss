@@ -1,6 +1,9 @@
 @import '../variables.scss';
 
 .categories {
+  white-space: nowrap; 
+  overflow-x: auto;
+
   ul {
     display: flex;
 
