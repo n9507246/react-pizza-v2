@@ -16,8 +16,8 @@ function App() {
       <div className="content">
         <div className="container">
           <div className="content__top">
-            <Categories  categoriesList={data.categories}/>
-            <Sort/>
+            <Categories style={{with:'50%'}} categoriesList={data.categories}/>
+            <Sort style={{with:'30%'}}/>
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">

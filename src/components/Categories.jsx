@@ -10,9 +10,7 @@ export default function Caregories({categoriesList}){
 
   return (
     <>
-    
-      <button onClick={() => { scrollRef.current.scrollLeft -= 50;}}>Right</button>
-      
+ 
       <div className="categories" ref={scrollRef} >  
         <CustomSelect
           listOfVariants={categoriesList} 
@@ -21,8 +19,6 @@ export default function Caregories({categoriesList}){
         />
       </div>
 
-      <button onClick={() => { scrollRef.current.scrollLeft += 50;}}>Left</button>
-    
     </>
   )
 }

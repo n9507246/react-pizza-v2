@@ -2,8 +2,19 @@
 
 .categories {
   white-space: nowrap; 
-  overflow-x: auto;
+  overflow-x: overlay;
+  padding-bottom: 2px;
+  width: 75%;
+  &::-webkit-scrollbar{
+    opacity: 0;
+    height: 10px;    
+  }
 
+  &:hover::-webkit-scrollbar-thumb{
+    border-radius: 30px;
+    background-color: #c7c7c7;
+
+  }
   ul {
     display: flex;
 
