@@ -5,16 +5,17 @@
   text-align: center;
   margin-bottom: 65px;
 
-  &:not(:nth-of-type(4n)) {
-    margin-right: 25px;
-    margin-left: 25px;
-  }
+  // &:not(:nth-of-type(4n)) {
+  //   margin-right: 25px;
+  //   margin-left: 25px;
+  // }
 
   &__image {
-    width: 260px;
+    max-width: 260px;
   }
 
   &__title {
+    white-space: nowrap;
     font-size: 20px;
     font-weight: 900;
     letter-spacing: 1%;
