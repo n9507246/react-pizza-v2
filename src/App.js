@@ -19,7 +19,7 @@ function App() {
             <Sort />
           </div>
           <h2 className="content__title">Все пиццы</h2>
-          <div className="row row-cols-md-2 row-cols-xl-3 content__items">
+          <div className="row row-cols-md-2 row-cols-xl-3 gx-5 content__items">
             {
               data.pizzas.map( pizzaData => 
                 <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>    

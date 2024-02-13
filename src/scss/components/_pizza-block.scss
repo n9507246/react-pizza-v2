@@ -59,6 +59,10 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+    @media (max-width: 768px) {
+      justify-content: space-around;
+    }
+    
   }
 
   &__price {

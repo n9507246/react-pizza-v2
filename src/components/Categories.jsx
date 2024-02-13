@@ -8,7 +8,7 @@ export default function Caregories({categoriesList}){
   const [currentCategory, setCurrentCategory] = useState(categoriesList[0])
 
   return (
-      <Swiper slidesPerView={'auto'} spaceBetween={15} className="categories">
+      <Swiper slidesPerView={'auto'} className="categories">
         {
           categoriesList.map( category => 
             <SwiperSlide 
