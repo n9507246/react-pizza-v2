@@ -4,17 +4,33 @@
 
 @import './components/all.scss';
 
+// Functions first
+@import "../../node_modules/bootstrap/scss/functions";
+
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+
+@import "../../node_modules/bootstrap/scss/containers";
+
+
 body {
   background-color: $background;
 }
 
 .wrapper {
-  width: calc(100vw - 100px);
-  height: 100%;
+  // width: calc(100vw - 100px);
+  // height: 100%;
   background-color: #fff;
-  margin: 50px auto;
+  // margin: 50px auto;
   border-radius: 10px;
-  max-width: 1400px;
+  // max-width: 1400px;
 }
 
 .content {
@@ -27,7 +43,8 @@ body {
   &__items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap:30px;
+    justify-content: space-around;
   }
 
   &__top {
@@ -55,7 +72,7 @@ body {
   }
 }
 
-.container {
+.app__container {
   width: $container-width;
   margin: 0 auto;
 
