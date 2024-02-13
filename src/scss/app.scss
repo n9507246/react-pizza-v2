@@ -4,6 +4,24 @@
 
 @import './components/all.scss';
 
+// Functions first
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Variable overrides second
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+// Required Bootstrap imports
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+
 body {
   background-color: $background;
 }
@@ -15,11 +33,11 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+  padding:  40px 70px;
 }
 
 .content {
-  padding: 40px 0;
-
+  
   &__title {
     margin: 35px 0;
   }
@@ -38,15 +56,15 @@ body {
 
     .categories{flex:6}
     .sort{flex:2}
-    @media (max-width: 1368px) {
+    @media (max-width: 1380px) {
       .categories{flex:5}
       .sort{flex:2}
     }
-    @media (max-width: 1233px) {
+    @media (max-width: 1245px) {
       .categories{flex:4}
       .sort{flex:2}
     }
-    @media (max-width: 1050px) {
+    @media (max-width: 1110px) {
       flex-direction: column;
       .categories{width:100%}
       .sort{align-self: flex-start;}
@@ -55,8 +73,8 @@ body {
   }
 }
 
-.container {
-  width: $container-width;
+.app__container {
+  width: $app__container-width;
   margin: 0 auto;
 
   &--cart {

@@ -10,11 +10,10 @@ function App() {
 
   return (
    <>
-    <div className="wrapper">
+    <div className="wrapper container">
 
       <Header/>
       <div className="content">
-        <div className="container">
           <div className="content__top">
             <Categories  categoriesList={data.categories}/>
             <Sort />
@@ -28,7 +27,6 @@ function App() {
             }
             
           </div>
-        </div>
       </div>
     </div>
   

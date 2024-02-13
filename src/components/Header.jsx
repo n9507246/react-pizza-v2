@@ -4,7 +4,6 @@ export default function Component (){
     return(
         <>
             <div className="header">
-                <div className="container">
                 <div className="header__logo">
                     <img width="38" src={logoSVG} alt="Pizza logo" />
                     <div>
@@ -47,7 +46,6 @@ export default function Component (){
                     </svg>
                     <span>3</span>
                     </a>
-                </div>
                 </div>
             </div>
         </>

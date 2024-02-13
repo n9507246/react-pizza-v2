@@ -2,13 +2,10 @@
 
 .header {
   border-bottom: 1px solid $gray-line;
-  padding: 40px 0;
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &__logo {
     display: flex;
