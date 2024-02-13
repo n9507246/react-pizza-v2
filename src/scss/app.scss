@@ -34,6 +34,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap:50px;
+
+    .categories{flex:6}
+    .sort{flex:2}
+    @media (max-width: 1368px) {
+      .categories{flex:5}
+      .sort{flex:2}
+    }
+    @media (max-width: 1233px) {
+      .categories{flex:4}
+      .sort{flex:2}
+    }
+    @media (max-width: 1050px) {
+      flex-direction: column;
+      .categories{width:100%}
+      .sort{align-self: flex-start;}
+      gap:30px;
+    }
   }
 }
 

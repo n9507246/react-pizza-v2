@@ -1,45 +1,28 @@
 @import '../variables.scss';
 
 .categories {
-  white-space: nowrap; 
-  overflow-x: overlay;
-  padding-bottom: 2px;
-  width: 75%;
-  &::-webkit-scrollbar{
-    opacity: 0;
-    height: 10px;    
-  }
-
-  &:hover::-webkit-scrollbar-thumb{
+  .category{
+    background-color: #f9f9f9;
+    padding: 13px 30px;
     border-radius: 30px;
-    background-color: #c7c7c7;
-
-  }
-  ul {
-    display: flex;
-
-    li {
-      background-color: #f9f9f9;
-      padding: 13px 30px;
-      border-radius: 30px;
-      margin-right: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.1s ease-in-out;
-      @include noselect();
-
-      &:hover {
-        background-color: darken(#f9f9f9, 2%);
-      }
-
-      &:active {
-        background-color: darken(#f9f9f9, 5%);
-      }
-
-      &.active {
-        background-color: #282828;
-        color: #fff;
-      }
+    box-sizing: border-box;
+    display: inline-block;
+    width: max-content;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+    white-space: nowrap;
+    @include noselect();
+    &:hover {
+      background-color: darken(#f9f9f9, 2%);
+    }
+    &:active {
+      background-color: darken(#f9f9f9, 5%);
+    }
+    &.active {
+      background-color: #282828;
+      color: #fff;
     }
   }
+
 }
