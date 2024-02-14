@@ -1,4 +1,4 @@
-import MySelect from "./UI/MySelect"
+import MySelect from "@UI/MySelect"
 
 
 
