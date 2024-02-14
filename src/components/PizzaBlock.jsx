@@ -1,5 +1,8 @@
 import MySelect from "./UI/MySelect"
 
+
+
+
 const PizzaSizes = ({sizes}) => {
     const variantsSizes = sizes.map((size, index)=>{ return {name:`${size} см.`, id:index}})
     return <MySelect variants={variantsSizes}/>
