@@ -14,7 +14,7 @@ export default function () {
       </div>
 
       <h2 className="content__title">Все пиццы</h2>
-      <PizzaList className="row row-cols-md-2 row-cols-xl-3 gx-5 content__items"/>
+      <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items"/>
 
    </>
   );

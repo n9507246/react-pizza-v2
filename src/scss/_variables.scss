@@ -5,4 +5,15 @@ $orange: #fe5f1e;
 
 $app__container-width: 90%;
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  llg: 1050px,
+  xl: 1200px,
+
+  xxl: 1400px
+);
+
 $duration: 0.15s;
