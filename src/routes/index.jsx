@@ -1,7 +1,7 @@
 import { createBrowserRouter} from "react-router-dom"
 
 import DefaultLayout from "@views/layouts/DefaultLayout"
-import StartPage from "@views/pages/StartPage"
+import Home from "@views/pages/Home"
 
 export default createBrowserRouter([
     {
@@ -9,7 +9,7 @@ export default createBrowserRouter([
         children:[
             {
                 path: '/',
-                element: <StartPage to='/dashboard'/>
+                element: <Home to='/dashboard'/>
             },
         ]
             

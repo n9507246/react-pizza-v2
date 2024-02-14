@@ -1,9 +1,13 @@
+import Header from '@components/Header'
 import { Outlet } from "react-router-dom";
 
 export default function (){
     return (
-        <div>
-            <Outlet />
+        <div className="wrapper container">
+        <Header/>
+            <div className="content">
+                <Outlet />
+            </div>
         </div>
     )
 }
