@@ -10,8 +10,8 @@ export default function Component(props){
     
     
     useOnMounted(() =>  {
-        axios.get('https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzxxxxas')
-            .then(res => {res && setDataPizzas(res)})
+        axios.get('https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas')
+            .then(res => {res.data && setDataPizzas(res.data)})
             .catch(e => setErrorLoadingPizzas(e.message))
             .finally(() =>  setIsLoadDataPizzas(false))
     })
