@@ -8,12 +8,18 @@ export const useFetching = (callback) => {
         try {
             setIsLoading(true)
             await callback(...args)
+            
         } catch (e) {
+            console.log('err', e)
             setError(e.message);
         } finally {
             setIsLoading(false)
         }
     }
 
-    return [fetching, isLoading, error]
+    return [
+        fetching,
+        isLoading,
+        error
+    ]
 }
