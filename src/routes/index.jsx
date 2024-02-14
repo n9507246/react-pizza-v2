@@ -3,6 +3,7 @@ import { createBrowserRouter} from "react-router-dom"
 import DefaultLayout from "@views/layouts/DefaultLayout"
 import Home from "@pages/Home"
 import NotFound from '@pages/NotFound'
+import Cart from "@pages/Cart"
 
 export default createBrowserRouter([
     
@@ -11,12 +12,17 @@ export default createBrowserRouter([
         children:[
             {
                 path: '/',
-                element: <Home to='/dashboard'/>
+                element: <Home/>
             },
+            {
+                path: '/cart',
+                element: <Cart/>
+            }
         ]
     },
     
     {
+
         element: <DefaultLayout/>,
         children:[
             {

@@ -42,7 +42,7 @@ export default function Component(props){
             {
                 
                 isLoadDataPizzas 
-                    ? <>{new Array(8).fill(null).map(e => <Skeleton className='col'/>)}</> 
+                    ? <>{new Array(8).fill(null).map((e, i) => <Skeleton key={i} className='col'/>)}</> 
                     : dataPizzas.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/> )
                                     
             }  
