@@ -1,7 +1,7 @@
 import './scss/app.scss'
-import Header from './components/Header'
-import Categories from './components/Categories'
-import Sort from './components/Sort'
+import Header from '@components/Header'
+import Categories from '@components/Categories'
+import Sort from '@components/Sort'
 
 import PizzaList from './components/PizzaList'
 // import PizzaBlock from'./components/PizzaBlock'

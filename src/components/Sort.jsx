@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import CustomSelect from "./UI/CustomSelect"
+import CustomSelect from "@UI/CustomSelect"
 import { gsap } from 'gsap';
 
 //TODO: требует рефакторинг

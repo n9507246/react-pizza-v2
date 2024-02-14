@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
-import useOnMounted from '../hooks/useOnMounted'
-import PizzaBlock from'./PizzaBlock'
+import useOnMounted from '@hooks/useOnMounted'
+import PizzaBlock from'@components/PizzaBlock'
 import ContentLoader from 'react-content-loader';
 
 const Skeleton = () => (
