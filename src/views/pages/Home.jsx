@@ -15,7 +15,7 @@ export default function () {
 
       <h2 className="content__title">Все пиццы</h2>
       <PizzaList className="row row-cols-md-2 row-cols-xl-3 gx-5 content__items"/>
-      
+
    </>
   );
 }
