@@ -17,7 +17,7 @@ function CartTitle(){
                 <path d="M8.33337 9.16667V14.1667" stroke="#B6B6B6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Очистить корзину</span>
+            <span class='cart__clear-text'>Очистить корзину</span>
             </div>
         </div>
     )
@@ -76,8 +76,8 @@ function CartButtom(){
     return(
         <div class="cart__bottom">
             <div class="cart__bottom-details">
-                <span> Всего пицц: <b>3 шт.</b> </span>
-                <span> Сумма заказа: <b>900 ₽</b> </span>
+                <span className='cart__bottom-data-order'> Всего пицц: <b>3 шт.</b> </span>
+                <span className='cart__bottom-data-order'> Сумма заказа: <b>900 ₽</b> </span>
             </div>
             <div class="cart__bottom-buttons">
                 <a href="/" class="button button--outline button--add go-back-btn">
@@ -97,19 +97,19 @@ function CartButtom(){
 export default function(){
     return(
         <div 
-            class=""
+            class="cart_content"
           
         >
-            <div class="cart "  style={
+            <div class="cart"  style={
                     {   
                         // display:"flex", 
                         // alignItems:"center"
                     }} >
                 <CartTitle/>
                 <div class="content__items " >
-                    <div class="content">
+                    {/* <div class="content"> */}
                         { new Array(4).fill(null).map(e => <CartItem/>) }
-                    </div>
+                    {/* </div> */}
                 </div>
                 <CartButtom/>
             </div>
