@@ -76,17 +76,17 @@ body {
     justify-content: space-between;
     gap:50px;
 
-    .categories{flex:6}
-    .sort{flex:2}
-    @media (max-width: 1380px) {
-      .categories{flex:5}
-      .sort{flex:2}
+    .categories{flex:8}
+    .sort{flex:3}
+    @media (max-width: 1400px) {
+      .categories{flex:7}
+      .sort{flex:3}
     }
-    @media (max-width: 1245px) {
+    @media (max-width: 1300px) {
       .categories{flex:4}
       .sort{flex:2}
     }
-    @media (max-width: 1110px) {
+    @media (max-width: 1200px) {
       flex-direction: column;
       .categories{width:100%}
       .sort{align-self: flex-start;}
