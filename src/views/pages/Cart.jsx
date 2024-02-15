@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-
+import { useEffect } from 'react'
 function CartTitle(){
     return(
         <div class="cart__top">
@@ -74,6 +74,7 @@ function CartItem(){
 }
 
 function CartButtom(){
+    useEffect(()=>{window.scrollTo(0,0)}, [])
     return(
         <div class="cart__bottom">
             <div class="cart__bottom-details">
