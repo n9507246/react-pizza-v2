@@ -53,20 +53,14 @@ function SortOptions( {sortBy, selectedSort, setSort}){
     )
 }
 
-export default function Component() {
+export default function Component({sortByList, selectedSort, setSelectedSort}) {
     
-    const SortByList = [
-        {name:'популярности', id: 0},
-        {name:'цене', id: 1},
-        {name:'алфавиту', id:2}
-    ]
-
-    const [selectedSort, setSelectedSort] = useState(SortByList[0])
+    console.log('props',{sortByList, selectedSort, setSelectedSort} )
 
     return(
         <SortSelector selectedSort={selectedSort}>
             <SortOptions 
-                sortBy={SortByList}
+                sortBy={sortByList}
                 selectedSort={selectedSort}
                 setSort={setSelectedSort}
             />

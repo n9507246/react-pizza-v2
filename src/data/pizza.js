@@ -6,7 +6,7 @@ export default [
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 803,
-      "category": 0,
+      "category": 4,
       "rating": 4
     },
     {
@@ -16,7 +16,7 @@ export default [
       "types": [0],
       "sizes": [26, 40],
       "price": 245,
-      "category": 0,
+      "category": 5,
       "rating": 6
     },
     {
@@ -36,7 +36,7 @@ export default [
       "types": [1],
       "sizes": [26, 30, 40],
       "price": 275,
-      "category": 2,
+      "category": 1,
       "rating": 2
     },
     {
@@ -56,7 +56,7 @@ export default [
       "types": [0],
       "sizes": [30, 40],
       "price": 580,
-      "category": 2,
+      "category": 1,
       "rating": 2
     },
     {

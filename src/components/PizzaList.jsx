@@ -1,8 +1,8 @@
-import axios from 'axios'
-import { useState } from 'react'
-import useOnMounted from '@hooks/useOnMounted'
 import PizzaBlock from'@components/PizzaBlock'
 import ContentLoader from 'react-content-loader';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+
+import { gsap } from 'gsap';
 
 const Skeleton = () => (
     <ContentLoader
@@ -22,29 +22,24 @@ const Skeleton = () => (
 );
 
 export default function Component(props){
-    const [dataPizzas, setDataPizzas] = useState([])
-    const [isLoadDataPizzas, setIsLoadDataPizzas] = useState(true)
-    const [errorLoadingPizzas, setErrorLoadingPizzas] = useState(null)
-    
-    
-    useOnMounted(() =>  {
-        axios.get('https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas')
-            .then(res => {res.data && setDataPizzas(res.data)})
-            .catch(e => setErrorLoadingPizzas(e.message))
-            .finally(() =>  setIsLoadDataPizzas(false))
-    })
 
-    if(errorLoadingPizzas !== null ) 
+    const elementRef = useRef(null);
+
+    useLayoutEffect(()=>{
+        gsap.from(elementRef.current,{ duration: 0.1, y: 35 })
+    }, [props.isLoadDataPizzas])
+    
+
+    if(props.errorLoadingPizzas !== null ) 
         return <h3 style={{color:'red'}}>{errorLoadingPizzas} </h3> 
 
+    if(props.isLoadDataPizzas ) 
+        return <div {...props}> {new Array(8).fill(null).map((e, i) => <Skeleton key={i} className='col'/>) } </div>
+
     return( 
-        <div {...props}>            
+        <div ref={elementRef} {...props}>            
             {
-                
-                isLoadDataPizzas 
-                    ? <>{new Array(8).fill(null).map((e, i) => <Skeleton key={i} className='col'/>)}</> 
-                    : dataPizzas.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/> )
-                                    
+                props.dataPizzas.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
             }  
         </div>
     )
