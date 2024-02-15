@@ -36,7 +36,7 @@ function Vatiant(props){
     const selectVariant = (props) => {
         // console.log('p', {name:props.variant.name, id:props.variant.id})
         
-        if(props.selectVariant) props.selectVariant({name:props.variant.name, id:props.variant.id})
+        if(props.selectVariant) props.selectVariant(props.variant)
         else console.error("Error component </CustomSelect>. Define props setVariant for change current variant.")
     }
 

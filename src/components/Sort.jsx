@@ -37,10 +37,11 @@ function SortSelector({ selectedSort, children }){
 
 function SortOptions( {sortBy, selectedSort, setSort}){
     const elementRef = useRef(null);
-
+    
     useEffect(() => {
       gsap.to(elementRef.current,{duration: 0.15, height:"155", opacity:1, ease: 'linear'});
     }, []);
+    
 
     return( 
         <div ref={elementRef} className="sort__popup">
@@ -55,7 +56,7 @@ function SortOptions( {sortBy, selectedSort, setSort}){
 
 export default function Component({sortByList, selectedSort, setSelectedSort}) {
     
-    console.log('props',{sortByList, selectedSort, setSelectedSort} )
+    
 
     return(
         <SortSelector selectedSort={selectedSort}>

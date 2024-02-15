@@ -27,19 +27,19 @@ export default function Component(props){
 
     useLayoutEffect(()=>{
         gsap.from(elementRef.current,{ duration: 0.1, y: 35 })
-    }, [props.isLoadDataPizzas])
+    }, [props.loader])
     
 
-    if(props.errorLoadingPizzas !== null ) 
+    if(props.error !== null ) 
         return <h3 style={{color:'red'}}>{errorLoadingPizzas} </h3> 
 
-    if(props.isLoadDataPizzas ) 
+    if(props.loader) 
         return <div {...props}> {new Array(8).fill(null).map((e, i) => <Skeleton key={i} className='col'/>) } </div>
 
     return( 
         <div ref={elementRef} {...props}>            
             {
-                props.dataPizzas.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
+                props.data.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
             }  
         </div>
     )

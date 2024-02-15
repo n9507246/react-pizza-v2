@@ -17,7 +17,11 @@ export default function () {
 
   const [currentCategory, setCurrentCategory] = useState({id:null, name:"Все"})
 
-  const SortByList = [ {name:'популярности', id: 0}, {name:'цене', id: 1}, {name:'алфавиту', id:2} ]
+  const SortByList = [ 
+    {name:'популярности', sort:'raiting',  id: 0},
+    {name:'цене', sort:'price', id: 1}, 
+    {name:'алфавиту', sort: 'title', id:2}   
+  ]
   const [selectedSort, setSelectedSort] = useState(SortByList[0])
 
   useEffect(()=>{window.scrollTo(0,0)}, [])
@@ -27,13 +31,16 @@ export default function () {
       setIsLoadDataPizzas(true)
       
       axios.get(`https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas`,
-        {params: {category: currentCategory.id}} 
+        {params: {
+          category: currentCategory.id,
+          sortBy: selectedSort.sort
+        }} 
       )
         .then(res =>  setDataPizzas(res.data) )
         .catch(e => setErrorLoadingPizzas (e.message))
         .finally(() => setIsLoadDataPizzas(false) )
   
-  }, [currentCategory])
+  }, [currentCategory, selectedSort])
 
   return (
    <>
@@ -51,9 +58,9 @@ export default function () {
 
       <h2 className="content__title">Все пиццы</h2>
         <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
-            dataPizzas={dataPizzas} 
-            isLoadDataPizzas={isLoadDataPizzas} 
-            errorLoadingPizzas={errorLoadingPizzas}
+            data={dataPizzas} 
+            loader={isLoadDataPizzas} 
+            error={errorLoadingPizzas}
         />
    </>
   );
