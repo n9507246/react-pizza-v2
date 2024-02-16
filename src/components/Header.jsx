@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logoSVG from '../assets/img/pizza-logo.svg'
+import Search from '@components/Search'
 
 export default function Component (){
     return(
@@ -15,6 +16,7 @@ export default function Component (){
                         </div>
                     </div>
                 </Link>
+                <Search/>
                 <div className="header__cart">
                     <Link to="/cart" className="button button--cart">
                     <span className="header__cart_price">520 ₽</span>
