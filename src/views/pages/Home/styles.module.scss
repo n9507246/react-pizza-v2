@@ -1,13 +1,47 @@
 .content__top{
-    // background-color: red;
+
     margin-bottom: 40px;
     
     .content__top_mainParamsFilter{
+
         display: flex;
-        align-items: center;
         justify-content: space-between;
         margin-bottom: 30px;
-        gap:50px;
+
+        @media (max-width: 768px) {
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .sortSelector{
+            @media (max-width: 768px){
+                position: relative;
+                left: -10px;
+            }
+            
+        }
+
+        .search{
+            width: 300px;
+            @media (max-width: 768px){
+                width: 90%;
+            }
+            @media (max-width: 470px){
+                width: 97%;
+                
+            }
+            
+        }
+        .search > div > input{
+            @media (max-width: 470px){
+                padding: 5px;
+                
+            }
+        }
+
+
+
     }
 
 }

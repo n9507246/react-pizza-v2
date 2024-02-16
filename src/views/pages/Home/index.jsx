@@ -12,7 +12,6 @@ import classes from './styles.module.scss'
 
 export default function () {
 
-  console.log(classes)
 
   const [dataPizzas, setDataPizzas] = useState([])
   const [isLoadDataPizzas, setIsLoadDataPizzas] = useState(false)
@@ -53,11 +52,14 @@ export default function () {
       <div className={classes.content__top}>
         <div className={classes.content__top_mainParamsFilter}>
             <Sort 
+              className={classes.sortSelector}
               sortByList={SortByList} 
               selectedSort={selectedSort} 
               setSelectedSort={setSelectedSort} 
             />
-            <Search/>  
+            {/* <div> */}
+            <Search  className={classes.search}/>
+            {/* </div>   */}
         </div>
         <Categories  
             categoriesList={data.categories} 

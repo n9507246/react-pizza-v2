@@ -20,12 +20,12 @@ function SvgArrow({isOpen}){
     )
 }
 
-function SortSelector({ selectedSort, children }){
+function SortSelector({ selectedSort, children ,className }){
     const [openOptions, setOpenOptions ] = useState(false)
-
+    const props_className = className
     return(
         <div onClick={() => setOpenOptions(!openOptions)} className="sort">
-            <div className="sort__label">
+            <div className={'sort__label' + ` ${props_className}` }>
                 <SvgArrow isOpen={openOptions}/>
                 <b>Показать:</b>
                 <span>{selectedSort.name}</span>
@@ -36,14 +36,17 @@ function SortSelector({ selectedSort, children }){
 }
 
 function SortOptions( {sortBy, selectedSort, setSort}){
+
     const elementRef = useRef(null);
     
     useEffect(() => {
       gsap.to(elementRef.current,{duration: 0.15, height:"200px", opacity:1, ease: 'linear'});
+      
     }, []);
     
-
+    
     return( 
+
         <div ref={elementRef} className="sort__popup" style={{height:'100px',opacity:'0'}}>
                 <CustomSelect 
                 listOfVariants={sortBy} 
@@ -54,16 +57,16 @@ function SortOptions( {sortBy, selectedSort, setSort}){
     )
 }
 
-export default function Component({sortByList, selectedSort, setSelectedSort}) {
+export default function Component(props) {
     
-    
+    console.log('selected sort props', props)
 
     return(
-        <SortSelector selectedSort={selectedSort}>
+        <SortSelector {...props} selectedSort={props.selectedSort}>
             <SortOptions 
-                sortBy={sortByList}
-                selectedSort={selectedSort}
-                setSort={setSelectedSort}
+                sortBy={props.sortByList}
+                selectedSort={props.selectedSort}
+                setSort={props.setSelectedSort}
             />
         </SortSelector>
 
