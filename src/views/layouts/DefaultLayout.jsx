@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 export default function (){
     return (
         <div className="wrapper container">
-        <Header/>
+            <Header/>
             <div >
                 <Outlet />
             </div>

@@ -1,0 +1,13 @@
+.content__top{
+    // background-color: red;
+    margin-bottom: 40px;
+    
+    &_mainParamsFilter{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap:50px;
+    }
+
+}
