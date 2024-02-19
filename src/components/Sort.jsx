@@ -59,7 +59,7 @@ function SortOptions( {sortBy, selectedSort, setSort}){
 
 export default function Component(props) {
     
-    console.log('selected sort props', props)
+    // console.log('selected sort props', props)
 
     return(
         <SortSelector {...props} selectedSort={props.selectedSort}>

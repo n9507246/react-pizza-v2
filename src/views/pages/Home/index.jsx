@@ -9,6 +9,7 @@ import data from '@/data'
 import Search from '@components/Search'
 
 import classes from './styles.module.scss'
+import NotFound from '../../../components/NotFound'
 
 export default function () {
 
@@ -17,7 +18,8 @@ export default function () {
   const [isLoadDataPizzas, setIsLoadDataPizzas] = useState(false)
   const [errorLoadingPizzas, setErrorLoadingPizzas] = useState(null)
 
-
+  const [searchQuery, setSearchQuery] = useState('')
+  
   const [currentCategory, setCurrentCategory] = useState({id:null, name:"Все"})
 
   const SortByList = [ 
@@ -26,6 +28,7 @@ export default function () {
     {name:'дешевые', sort:'price', direction: 'asc' , id: 2},
     {name:'по алфавиту', sort: 'title', direction: 'asc', id:3}   
   ]
+
   const [selectedSort, setSelectedSort] = useState(SortByList[0])
 
   useEffect(()=>{window.scrollTo(0,0)}, [])
@@ -35,17 +38,23 @@ export default function () {
       setIsLoadDataPizzas(true)
       
       axios.get(`https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas`,
-        {params: {
-          category: currentCategory.id,
-          sortBy: selectedSort.sort,
-          order: selectedSort.direction,
-        }} 
+        {
+          params: {
+            category: currentCategory.id,
+            sortBy: selectedSort.sort,
+            order: selectedSort.direction,
+            search: searchQuery 
+          }
+        } 
       )
         .then(res =>  setDataPizzas(res.data) )
-        .catch(e => setErrorLoadingPizzas (e.message))
+        .catch(e => {
+          if(e.response.data === "Not found")
+            setDataPizzas([])
+        })
         .finally(() => setIsLoadDataPizzas(false) )
   
-  }, [currentCategory, selectedSort])
+  }, [currentCategory, selectedSort, searchQuery])
 
   return (
    <>
@@ -57,9 +66,10 @@ export default function () {
               selectedSort={selectedSort} 
               setSelectedSort={setSelectedSort} 
             />
-            {/* <div> */}
-            <Search  className={classes.search}/>
-            {/* </div>   */}
+            <Search  
+              className={classes.search} 
+              value={setSearchQuery}
+            />
         </div>
         <Categories  
             categoriesList={data.categories} 
@@ -67,11 +77,15 @@ export default function () {
             setCurrentCategory={setCurrentCategory}/>
       </div>  
       <h2 className="content__title">Все пиццы</h2>
-        <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
+        {
+          dataPizzas.length > 0 ? <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
             data={dataPizzas} 
             loader={isLoadDataPizzas} 
             error={errorLoadingPizzas}
-        />
+          />
+          : <NotFound message='По вашему запросу в текущий момент нет пицц'/>
+        }
+        
    </>
   );
 }

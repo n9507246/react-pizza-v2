@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 
-export default function () {
+export default function (props) {
   return (
     <div className={styles.root}>
       <h1>
@@ -9,7 +9,11 @@ export default function () {
         Ничего не найдено
       </h1>
       <p className={styles.description}>
-        К сожалени данная страница отсутствует в нашем интернет-магазине
+        {
+          props.message ? <span>{props.message}</span> :
+          <span>К сожалени данная страница отсутствует в нашем интернет-магазине</span> 
+        }
+        
       </p>
     </div>
   );
