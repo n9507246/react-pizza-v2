@@ -87,7 +87,7 @@ export default function () {
         {
           <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
             data={dataPizzas} 
-            loader={isLoadDataPizzas} 
+            loader={isLoadDataPizzas ? 1 : 0 } 
             error={errorLoadingPizzas}
           />
 

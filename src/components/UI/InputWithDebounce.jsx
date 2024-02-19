@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 export default (props) => {
 
 
-  const setValue = props.setValue ? props.setValue : () => {
+  const setValue = props.valueWithDebounce ? props.valueWithDebounce : () => {
     console.error('component <InputWithDebounce/> must have props.setValue for change params.')
   }
 

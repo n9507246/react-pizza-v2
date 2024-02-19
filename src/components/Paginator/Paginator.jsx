@@ -3,7 +3,7 @@ import classes from './paginator.module.scss'
 
 export default function Paginator(props){
     return(
-        <div {...props}>
+        <div className={props.className}>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"
