@@ -2,7 +2,6 @@
 import Categories from '@components/Categories'
 import Sort from '@components/Sort'
 import PizzaList from'@components/PizzaList'
-import NotFound from '@components/NotFound'
 import Search from '@components/Search'
 import Paginator from '@components/Paginator/Paginator';
 
@@ -23,6 +22,7 @@ export default function () {
   const [searchQuery, setSearchQuery] = useState('')
   
   const [currentCategory, setCurrentCategory] = useState({id:null, name:"Все"})
+  const [currentPage, setCurrentPage] = useState(1)
 
   const SortByList = [ 
     {name:'самые популярные', sort:'raiting', direction: 'desc',  id: 0},
@@ -38,6 +38,7 @@ export default function () {
   useEffect(()=>{
       
       setIsLoadDataPizzas(true)
+      setErrorLoadingPizzas(null)
       
       axios.get(`https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas`,
         {
@@ -45,21 +46,23 @@ export default function () {
             category: currentCategory.id,
             sortBy: selectedSort.sort,
             order: selectedSort.direction,
-            search: searchQuery 
+            search: searchQuery,
+            limit: 8,
+            page: currentPage
           }
         } 
       )
         .then(res =>  setDataPizzas(res.data) )
         .catch(e => {
           if(e.response.data === "Not found")
-            setDataPizzas([])
+          setErrorLoadingPizzas({message:"По вашему запросу в текущий момент нет пицц"})
         })
         .finally(() => setIsLoadDataPizzas(false) )
   
-  }, [currentCategory, selectedSort, searchQuery])
+  }, [currentCategory, selectedSort, searchQuery, currentPage])
 
   return (
-   <>
+    <>
       <div className={classes.content__top}>
         <div className={classes.content__top_mainParamsFilter}>
             <Sort 
@@ -80,14 +83,14 @@ export default function () {
       </div>  
       <h2 className="content__title">Все пиццы</h2>
         {
-          dataPizzas.length > 0 ? <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
+          <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
             data={dataPizzas} 
             loader={isLoadDataPizzas} 
             error={errorLoadingPizzas}
           />
-          : <NotFound style={{minHeight: '70vh'}} message='По вашему запросу в текущий момент нет пицц'/>
+
         }
-        <Paginator className={classes.paginator}/>
-   </>
+        <Paginator className={classes.paginator} setPage={setCurrentPage}/>
+    </>
   );
 }

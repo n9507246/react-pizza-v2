@@ -7,9 +7,9 @@ export default function Paginator(props){
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"
-                onPageChange={()=>{}}
+                onPageChange={(e) => {props.setPage(e.selected + 1)}}
                 pageRangeDisplayed={5}
-                pageCount={5}
+                pageCount={3}
                 previousLabel="<"
                 renderOnZeroPageCount={null}
 

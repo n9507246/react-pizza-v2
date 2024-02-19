@@ -1,7 +1,7 @@
 import PizzaBlock from'@components/PizzaBlock'
 import ContentLoader from 'react-content-loader';
 import { useEffect, useLayoutEffect, useRef } from 'react';
-
+import NotFound from '@components/NotFound'
 import { gsap } from 'gsap';
 
 const Skeleton = () => (
@@ -31,7 +31,8 @@ export default function Component(props){
     
 
     if(props.error !== null ) 
-        return <h3 style={{color:'red'}}>{errorLoadingPizzas} </h3> 
+        
+        return <NotFound style={{minHeight: '70vh'}} message={props.error.message}/> 
 
     if(props.loader) 
         return <div {...props}> {new Array(8).fill(null).map((e, i) => <Skeleton key={i} className='col'/>) } </div>
