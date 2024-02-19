@@ -18,8 +18,10 @@ export default defineConfig({
       '@':  path.resolve(__dirname, './src'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@components': path.resolve(__dirname, './src/components'),
-      '@UI':  path.resolve(__dirname, './src/components/UI')
-    },
+      '@UI':  path.resolve(__dirname, './src/components/UI'),
+      '@store' : path.resolve(__dirname, './src/redux/store.js'),
+      '@redux-slices' : path.resolve(__dirname, './src/redux/slices'),
+    }, 
   },
   plugins: [react()],
 })

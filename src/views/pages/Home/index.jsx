@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import data from '@/data'
 
+import Test from '@components/Test'
 
 export default function () {
 
@@ -63,6 +64,7 @@ export default function () {
 
   return (
     <>
+      <Test/>
       <div className={classes.content__top}>
         <div className={classes.content__top_mainParamsFilter}>
             <Sort 
