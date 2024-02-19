@@ -83,7 +83,7 @@ export default function () {
             loader={isLoadDataPizzas} 
             error={errorLoadingPizzas}
           />
-          : <NotFound message='По вашему запросу в текущий момент нет пицц'/>
+          : <NotFound style={{minHeight: '70vh'}} message='По вашему запросу в текущий момент нет пицц'/>
         }
         
    </>
