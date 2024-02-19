@@ -1,0 +1,56 @@
+.root{
+    display: flex;
+    gap:15px;
+    .pageClassName, .nextClassName, .previousClassName{
+        border: 1px solid #fe5f1e;
+        border-radius: 100px;
+        cursor: pointer;   
+        a{
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+ 
+            
+            width: 40px;
+            height: 40px;   
+            @media (max-width: 2000px) {
+                width: 40px;
+                height: 40px;   
+            }
+            
+
+            font-weight: 600;
+            font-size: 18px;
+            color: #fe5f1e;
+
+        }
+
+        transition: background-color .2s ease;
+        
+        &:hover{
+            background-color: #fe5f1e;
+            a{
+                color: white;
+            }
+        }
+    }
+    .activeClassName{
+        background-color: #fe5f1e;
+        a{
+            color: white;
+        }
+        cursor:default;
+    }
+    .disabledClassName{
+        background-color: #fbbea6;
+        border-color: #fbbea6;
+        a{
+            color: white;
+        }
+        &:hover{
+            background-color: #fbbea6;    
+        }
+        cursor:default;
+    }   
+}

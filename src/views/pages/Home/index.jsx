@@ -1,15 +1,17 @@
+
 import Categories from '@components/Categories'
 import Sort from '@components/Sort'
 import PizzaList from'@components/PizzaList'
-
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-
-import data from '@/data'
+import NotFound from '@components/NotFound'
 import Search from '@components/Search'
+import Paginator from '@components/Paginator/Paginator';
 
 import classes from './styles.module.scss'
-import NotFound from '../../../components/NotFound'
+
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import data from '@/data'
+
 
 export default function () {
 
@@ -85,7 +87,7 @@ export default function () {
           />
           : <NotFound style={{minHeight: '70vh'}} message='По вашему запросу в текущий момент нет пицц'/>
         }
-        
+        <Paginator className={classes.paginator}/>
    </>
   );
 }
