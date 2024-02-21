@@ -24,16 +24,7 @@ export default function () {
   const [currentPage, setCurrentPage] = useState(1)
 
   const {categories, sort} = useSelector(store => store.filter)
-  console.log(sort)
-  const SortByList = [ 
-    {name:'самые популярные', sort:'raiting', direction: 'desc',  id: 0},
-    {name:'дорогие', sort:'price', direction: 'desc' , id: 1},
-    {name:'дешевые', sort:'price', direction: 'asc' , id: 2},
-    {name:'по алфавиту', sort: 'title', direction: 'asc', id:3}   
-  ]
 
-  const [selectedSort, setSelectedSort] = useState(SortByList[0])
-  
   useEffect(()=>{
       window.scrollTo(0,0)
       setIsLoadDataPizzas(true)
@@ -43,8 +34,8 @@ export default function () {
         {
           params: {
             category: categories.current.id,
-            sortBy: selectedSort.sort,
-            order: selectedSort.direction,
+            sortBy: sort.currentVariant.sort,
+            order: sort.currentVariant.direction,
             search: searchQuery,
             limit: 8,
             page: currentPage
@@ -59,8 +50,7 @@ export default function () {
       .finally(() => setIsLoadDataPizzas(false) )
   
   }, [
-    categories, 
-    selectedSort, searchQuery, currentPage])
+    categories, sort, searchQuery, currentPage])
 
   return (
     <>
@@ -68,9 +58,6 @@ export default function () {
         <div className={classes.content__top_mainParamsFilter}>
             <Sort 
               className={classes.sortSelector}
-              sortByList={SortByList} 
-              selectedSort={selectedSort} 
-              setSelectedSort={setSelectedSort} 
             />
             <Search  
               className={classes.search} 

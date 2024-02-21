@@ -16,13 +16,13 @@ const initialState = {
         current: {id:null, name:"Все"},
     },
     sort: {
-        params : [
+        variants : [
             {name:'самые популярные', sort:'raiting', direction: 'desc',  id: 0},
             {name:'дорогие', sort:'price', direction: 'desc' , id: 1},
             {name:'дешевые', sort:'price', direction: 'asc' , id: 2},
             {name:'по алфавиту', sort: 'title', direction: 'asc', id:3}   
         ],
-        selectedSort: {name:'самые популярные', sort:'raiting', direction: 'desc',  id: 0},
+        currentVariant: {name:'самые популярные', sort:'raiting', direction: 'desc',  id: 0},
     }
 }
 
@@ -32,11 +32,14 @@ export const filterSlice = createSlice({
     reducers: {
         changeCategory: (state, action) => {
             state.categories.current = action.payload
+        },
+        changeSortVarian: (state, action) => {
+            state.sort.currentVariant = action.payload
         }
    },
 })
 
 // // Action creators are generated for each case reducer function
-export const {changeCategory} = filterSlice.actions
+export const {changeCategory,changeSortVarian} = filterSlice.actions
 
 export default filterSlice.reducer

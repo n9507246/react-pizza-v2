@@ -32,7 +32,8 @@ import { useState } from "react"
 
 
 function Vatiant(props){
-    
+    // console.log('currentVariant',props)
+    // console.log('setVariant',setVariant)
     const selectVariant = (props) => {
         // console.log('p', {name:props.variant.name, id:props.variant.id})
         
@@ -51,6 +52,7 @@ function Vatiant(props){
 }
 
 export default function CustomSelect({listOfVariants, currentVariant=listOfVariants[0], setVariant}){
+
     return(
         <ul>
             {

@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react"
 import CustomSelect from "@UI/CustomSelect"
 import { gsap } from 'gsap';
+import { useDispatch, useSelector } from "react-redux";
+import { changeSortVarian } from "../redux/slices/filterSlice";
 
 //TODO: требует рефакторинг
 
@@ -21,6 +23,7 @@ function SvgArrow({isOpen}){
 }
 
 function SortSelector({ selectedSort, children ,className }){
+
     const [openOptions, setOpenOptions ] = useState(false)
     const props_className = className
     return(
@@ -44,6 +47,7 @@ function SortOptions( {sortBy, selectedSort, setSort}){
       
     }, []);
     
+
     
     return( 
 
@@ -59,14 +63,17 @@ function SortOptions( {sortBy, selectedSort, setSort}){
 
 export default function Component(props) {
     
-    // console.log('selected sort props', props)
+
+    const {sort} = useSelector(store => store.filter)
+    const dispatch = useDispatch()
+    const setSort = (variant) => {dispatch(changeSortVarian(variant))}
 
     return(
-        <SortSelector {...props} selectedSort={props.selectedSort}>
+        <SortSelector {...props} selectedSort={sort.currentVariant}>
             <SortOptions 
-                sortBy={props.sortByList}
-                selectedSort={props.selectedSort}
-                setSort={props.setSelectedSort}
+                sortBy={sort.variants}
+                selectedSort={sort.currentVariant}
+                setSort={setSort}
             />
         </SortSelector>
 
