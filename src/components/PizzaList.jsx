@@ -1,6 +1,6 @@
 import PizzaBlock from'@components/PizzaBlock'
 import ContentLoader from 'react-content-loader';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import {useLayoutEffect, useRef } from 'react';
 import NotFound from '@components/NotFound'
 import { gsap } from 'gsap';
 
