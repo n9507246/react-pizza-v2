@@ -12,7 +12,7 @@ import axios from 'axios'
 
 import { useSelector } from 'react-redux';
 
-export default function () {
+export default function Home() {
 
 
   const [dataPizzas, setDataPizzas] = useState([])
@@ -49,16 +49,13 @@ export default function () {
       })
       .finally(() => setIsLoadDataPizzas(false) )
   
-  }, [
-    categories, sort, searchQuery, currentPage])
+  }, [ categories, sort, searchQuery, currentPage])
 
   return (
     <>
       <div className={classes.content__top}>
         <div className={classes.content__top_mainParamsFilter}>
-            <Sort 
-              className={classes.sortSelector}
-            />
+            <Sort className={classes.sortSelector} />
             <Search  
               className={classes.search} 
               value={setSearchQuery}
