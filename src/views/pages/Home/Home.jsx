@@ -64,15 +64,13 @@ export default function Home() {
         <Categories />
       </div>  
       <h2 className="content__title">Все пиццы</h2>
-        {
           <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
             data={dataPizzas} 
             loader={isLoadDataPizzas ? 1 : 0 } 
             error={errorLoadingPizzas}
           />
-
-        }
         <Paginator className={classes.paginator} setPage={setCurrentPage}/>
+        
     </>
   );
 }

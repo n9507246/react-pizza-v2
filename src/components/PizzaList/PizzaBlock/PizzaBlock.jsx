@@ -1,3 +1,6 @@
+import PizzaSizes from "./PizzaSizes"
+import PizzaTypes from "./PizzaTypes"
+
 export default function PizzaBlock({data}) {
     const {imageUrl, title, sizes, price, types } = data
     return(
@@ -6,6 +9,7 @@ export default function PizzaBlock({data}) {
                 <img className="pizza-block__image" src={imageUrl} alt="Pizza"/>
                 <h4 className="pizza-block__title">{title}</h4>
                 <div className="pizza-block__selector">
+                    
                     <PizzaTypes types={types} />
                     <PizzaSizes sizes={sizes} />
                 </div>

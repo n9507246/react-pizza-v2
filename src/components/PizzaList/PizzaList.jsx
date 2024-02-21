@@ -1,7 +1,8 @@
 import {useLayoutEffect, useRef } from 'react';
 import NotFound from '@components/NotFound'
 import PizzaBlock from './PizzaBlock';
-import Skeleton from './PizzaBlock/PizzaSkeleton';
+import PizzaSkeleton from './PizzaBlock/PizzaSkeleton';
+import gsap from 'gsap';
 
 export default function PizzaList(props){
 
@@ -16,10 +17,11 @@ export default function PizzaList(props){
         return <NotFound style={{minHeight: '70vh'}} message={props.error.message}/> 
 
     if(props.loader) 
-        return <div {...props}> {new Array(8).fill(null).map((e, i) => <Skeleton key={i} className='col'/>) } </div>
+        return <div {...props}> {new Array(8).fill(null).map((e, i) => <PizzaSkeleton key={i} className='col'/>) } </div>
 
     return( 
-        <div ref={elementRef} {...props}>            
+        <div ref={elementRef} {...props}>    
+
             {
                 props.data.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
             }  

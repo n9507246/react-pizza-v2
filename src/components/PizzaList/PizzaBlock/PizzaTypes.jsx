@@ -1,7 +1,7 @@
 import MySelect from "@UI/MySelect"
 
 
-const PizzaTypes = ({types}) => {
+export default function PizzaTypes ({types}) {
 
     const listNamesTypes = ['тонкое', 'традицинное']
     
