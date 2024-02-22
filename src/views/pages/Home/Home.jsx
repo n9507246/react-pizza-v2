@@ -15,9 +15,7 @@ import { useSelector } from 'react-redux';
 export default function Home() {
 
 
-  const [dataPizzas, setDataPizzas] = useState([])
-  const [isLoadDataPizzas, setIsLoadDataPizzas] = useState(false)
-  const [errorLoadingPizzas, setErrorLoadingPizzas] = useState(null)
+
 
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -25,31 +23,7 @@ export default function Home() {
 
   const {categories, sort} = useSelector(store => store.filter)
 
-  useEffect(()=>{
-      window.scrollTo(0,0)
-      setIsLoadDataPizzas(true)
-      setErrorLoadingPizzas(null)
-      
-      axios.get(`https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas`,
-        {
-          params: {
-            category: categories.current.id,
-            sortBy: sort.currentVariant.sort,
-            order: sort.currentVariant.direction,
-            search: searchQuery,
-            limit: 8,
-            page: currentPage
-          }
-        } 
-      )
-      .then(res =>  setDataPizzas(res.data) )
-      .catch(e => {
-        if(e.response.data === "Not found")
-        setErrorLoadingPizzas({message:"По вашему запросу в текущий момент нет пицц"})
-      })
-      .finally(() => setIsLoadDataPizzas(false) )
-  
-  }, [ categories, sort, searchQuery, currentPage])
+
 
   return (
     <>
@@ -64,11 +38,7 @@ export default function Home() {
         <Categories />
       </div>  
       <h2 className="content__title">Все пиццы</h2>
-      <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" 
-        data={dataPizzas} 
-        loader={isLoadDataPizzas ? 1 : 0 } 
-        error={errorLoadingPizzas}
-      />
+      <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" />
       <Paginator className={classes.paginator} setPage={setCurrentPage}/>
     </>
   );

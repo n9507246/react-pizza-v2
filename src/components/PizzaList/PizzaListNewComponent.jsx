@@ -4,7 +4,7 @@ import PizzaBlock from './PizzaBlock';
 import PizzaSkeleton from './PizzaBlock/PizzaSkeleton';
 import gsap from 'gsap';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPizzas } from '../../redux/slices/pizzaSlice';
+import { fetchPizzas } from '@redux-slices/pizzaSlice';
 
 export default function PizzaList(props){
 
