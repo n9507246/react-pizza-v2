@@ -9,7 +9,6 @@ import { fetchPizzas } from '@redux-slices/pizzaSlice';
 export default function PizzaList(props){
 
     const dataPizza = useSelector(store=>store.pizzas)
-    console.log(dataPizza)
     const {categories, sort, search} = useSelector(store => store.filter)
     
     const dispatch = useDispatch()
