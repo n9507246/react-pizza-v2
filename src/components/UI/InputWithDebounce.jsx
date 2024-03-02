@@ -6,7 +6,7 @@ export default (props) => {
     console.error('component <InputWithDebounce/> must have props.setValue for change params.')
   }
 
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(props.currentValue);
     useEffect(() => {
       const timeOutId = setTimeout(() => setValue(query), props.debouce);
       return () => clearTimeout(timeOutId);
@@ -15,6 +15,6 @@ export default (props) => {
     
 
     return (
-      <input placeholder="Поиск пиццы..."  onChange={event => setQuery(event.target.value)} />
+      <input placeholder="Поиск пиццы..." value={query} onChange={event => setQuery(event.target.value)} />
     )
 }

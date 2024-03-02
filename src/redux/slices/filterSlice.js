@@ -23,7 +23,8 @@ const initialState = {
             {name:'по алфавиту', sort: 'title', direction: 'asc', id:3}   
         ],
         currentVariant: {name:'самые популярные', sort:'raiting', direction: 'desc',  id: 0},
-    }
+    },
+    search: {value: ''}
 }
 
 export const filterSlice = createSlice({
@@ -35,11 +36,14 @@ export const filterSlice = createSlice({
         },
         changeSortVarian: (state, action) => {
             state.sort.currentVariant = action.payload
+        },
+        changeSearchValue: (state, action) => {     
+            state.search.value = action.payload
         }
    },
 })
 
 // // Action creators are generated for each case reducer function
-export const {changeCategory,changeSortVarian} = filterSlice.actions
+export const {changeCategory,changeSortVarian, changeSearchValue} = filterSlice.actions
 
 export default filterSlice.reducer

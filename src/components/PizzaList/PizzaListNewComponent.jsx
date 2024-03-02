@@ -9,7 +9,7 @@ import { fetchPizzas } from '@redux-slices/pizzaSlice';
 export default function PizzaList(props){
 
     const dataPizza = useSelector(store=>store.pizzas)
-    const {categories, sort} = useSelector(store => store.filter)
+    const {categories, sort, search} = useSelector(store => store.filter)
     
     const dispatch = useDispatch()
     useEffect(()=>{
@@ -18,12 +18,12 @@ export default function PizzaList(props){
                 category: categories.current.id,
                 sortBy: sort.currentVariant.sort,
                 order: sort.currentVariant.direction,
-                //search: searchQuery,
+                search: search.value,
                 limit: 8,
                 page: 1
             })
         )
-    }, [categories, sort])
+    }, [categories, sort, search])
 
 
     const elementRef = useRef(null);

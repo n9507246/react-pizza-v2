@@ -7,33 +7,19 @@ import Paginator from '@components/Paginator/Paginator';
 
 import classes from './styles.module.scss'
 
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
 
-import { useSelector } from 'react-redux';
 
 export default function Home() {
 
-
-
-
-  const [searchQuery, setSearchQuery] = useState('')
-
   const [currentPage, setCurrentPage] = useState(1)
-
-  const {categories, sort} = useSelector(store => store.filter)
-
-
 
   return (
     <>
       <div className={classes.content__top}>
         <div className={classes.content__top_mainParamsFilter}>
             <Sort className={classes.sortSelector} />
-            <Search  
-              className={classes.search} 
-              value={setSearchQuery}
-            />
+            <Search className={classes.search} />
         </div>
         <Categories />
       </div>  
