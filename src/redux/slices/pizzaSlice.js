@@ -3,12 +3,18 @@ import axios from 'axios'
 
 export const fetchPizzas = createAsyncThunk(
     'pizzas/fetchPizzas',
-    async function(paramsQuery){
-        const response = await axios.get(
-            `https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas`,
-            { params: paramsQuery } 
-        )
-        return response.data
+    async function(paramsQuery, {rejectWithValue}){
+        try{
+            const response = await axios.get(
+                `https://65cc38e9dd519126b83e219c.mockapi.io/api/v1/pizzas`,
+                { params: paramsQuery } 
+            )
+            return response.data
+        }catch(error){
+            if(error.response.status == 404)
+                return rejectWithValue("К сожалению по вашему запросу ничего не найдено.")
+            else rejectWithValue("К сожалению по вашему запросу ничего не найдено.")
+        }
     }
 )
 
@@ -30,12 +36,17 @@ export const pizzaSlice = createSlice({
             state.isLoading = true
             state.error = null
         }
-    )
-    builder.addCase(
+    ).addCase(
         fetchPizzas.fulfilled, 
         (state, action) => {
             state.isLoading = false
             state.list = action.payload
+        }
+    ).addCase(
+        fetchPizzas.rejected, 
+        (state, action) => {
+            state.isLoading = false
+            state.error = action.payload
         }
     )
 

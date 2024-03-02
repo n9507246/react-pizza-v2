@@ -9,6 +9,7 @@ import { fetchPizzas } from '@redux-slices/pizzaSlice';
 export default function PizzaList(props){
 
     const dataPizza = useSelector(store=>store.pizzas)
+    console.log(dataPizza)
     const {categories, sort, search} = useSelector(store => store.filter)
     
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ export default function PizzaList(props){
     
 
     if(dataPizza.error !== null ) 
-        return <NotFound style={{minHeight: '70vh'}} message={props.error.message}/> 
+        return <NotFound style={{minHeight: '70vh'}} message={dataPizza.error }/> 
 
     if(dataPizza.isLoading) 
         return <div {...props}> {new Array(8).fill(null).map((e, i) => <PizzaSkeleton key={i} className='col'/>) } </div>
