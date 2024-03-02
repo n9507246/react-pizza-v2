@@ -1,3 +1,3 @@
-import PizzaList from "./PizzaListNewComponent";
+import PizzaList from "./PizzaList";
 
 export default PizzaList

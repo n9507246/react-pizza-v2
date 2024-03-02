@@ -1,29 +1,47 @@
-import {useLayoutEffect, useRef } from 'react';
+import {useEffect, useLayoutEffect, useRef } from 'react';
 import NotFound from '@components/NotFound'
 import PizzaBlock from './PizzaBlock';
 import PizzaSkeleton from './PizzaBlock/PizzaSkeleton';
 import gsap from 'gsap';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPizzas } from '@redux-slices/pizzaSlice';
 
 export default function PizzaList(props){
 
-    const elementRef = useRef(null);
+    const dataPizza = useSelector(store=>store.pizzas)
+    const {categories, sort, search} = useSelector(store => store.filter)
+    
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(
+            fetchPizzas({            
+                category: categories.current.id,
+                sortBy: sort.currentVariant.sort,
+                order: sort.currentVariant.direction,
+                search: search.value,
+                limit: 8,
+                page: 1
+            })
+        )
+    }, [categories, sort, search])
 
+
+    const elementRef = useRef(null);
     useLayoutEffect(()=>{
         gsap.from(elementRef.current,{ duration: 0.1, y: 35 })
-    }, [props.loader])
+    }, [dataPizza.isLoading])
     
 
-    if(props.error !== null ) 
-        return <NotFound style={{minHeight: '70vh'}} message={props.error.message}/> 
+    if(dataPizza.error !== null ) 
+        return <NotFound style={{minHeight: '70vh'}} message={dataPizza.error }/> 
 
-    if(props.loader) 
+    if(dataPizza.isLoading) 
         return <div {...props}> {new Array(8).fill(null).map((e, i) => <PizzaSkeleton key={i} className='col'/>) } </div>
 
     return( 
-        <div ref={elementRef} {...props}>    
-
+        <div  ref={elementRef}  {...props}>    
             {
-                props.data.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
+                dataPizza.list.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
             }  
         </div>
     )
