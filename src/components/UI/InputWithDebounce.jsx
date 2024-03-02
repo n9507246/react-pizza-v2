@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 
 export default (props) => {
 
-
-  const setValue = props.valueWithDebounce ? props.valueWithDebounce : () => {
+  const setValue = props.setValue ? props.setValue : () => {
     console.error('component <InputWithDebounce/> must have props.setValue for change params.')
   }
 
@@ -16,6 +15,6 @@ export default (props) => {
     
 
     return (
-      <input placeholder="Поиск пиццы..." onChange={event => setQuery(event.target.value)} />
+      <input placeholder="Поиск пиццы..."  onChange={event => setQuery(event.target.value)} />
     )
 }
