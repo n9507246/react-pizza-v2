@@ -7,13 +7,7 @@ import Paginator from '@components/Paginator/Paginator';
 
 import classes from './styles.module.scss'
 
-import { useState } from 'react'
-
-
 export default function Home() {
-
-  const [currentPage, setCurrentPage] = useState(1)
-
   return (
     <>
       <div className={classes.content__top}>
@@ -25,7 +19,7 @@ export default function Home() {
       </div>  
       <h2 className="content__title">Все пиццы</h2>
       <PizzaList className="row row-cols-md-2 row-cols-llg-3 row-cols-xxl-4 gx-5 content__items" />
-      <Paginator className={classes.paginator} setPage={setCurrentPage}/>
+      <Paginator className={classes.paginator}/>
     </>
   );
 }

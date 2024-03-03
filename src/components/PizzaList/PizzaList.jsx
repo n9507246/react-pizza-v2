@@ -19,11 +19,11 @@ export default function PizzaList(props){
                 sortBy: sort.currentVariant.sort,
                 order: sort.currentVariant.direction,
                 search: search.value,
-                limit: 8,
-                page: 1
+                limit: dataPizza.queryLimit,
+                page: dataPizza.page
             })
         )
-    }, [categories, sort, search])
+    }, [categories, sort, search, dataPizza.queryLimit, dataPizza.page ])
 
 
     const elementRef = useRef(null);
@@ -39,10 +39,13 @@ export default function PizzaList(props){
         return <div {...props}> {new Array(8).fill(null).map((e, i) => <PizzaSkeleton key={i} className='col'/>) } </div>
 
     return( 
-        <div  ref={elementRef}  {...props}>    
-            {
-                dataPizza.list.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
-            }  
-        </div>
+        <>
+            <div  ref={elementRef}  {...props}>    
+                {
+                    dataPizza.list.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
+                }  
+            </div>
+
+        </>
     )
 }

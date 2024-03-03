@@ -1,13 +1,18 @@
 import ReactPaginate from 'react-paginate';
 import classes from './paginator.module.scss'
+import { useDispatch } from 'react-redux';
+import { changeCurrentPage } from '@redux-slices/pizzaSlice';
 
 export default function Paginator(props){
+
+    const dispatch = useDispatch()
+
     return(
         <div className={props.className}>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"
-                onPageChange={(e) => {props.setPage(e.selected + 1)}}
+                onPageChange={(e) => {dispatch(changeCurrentPage(e.selected + 1))}}
                 pageRangeDisplayed={5}
                 pageCount={3}
                 previousLabel="<"
