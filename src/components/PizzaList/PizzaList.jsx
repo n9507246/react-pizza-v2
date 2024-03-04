@@ -5,6 +5,7 @@ import PizzaSkeleton from './PizzaBlock/PizzaSkeleton';
 import gsap from 'gsap';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzas } from '@redux-slices/pizzaSlice';
+import useCustomFilter from '../../hooks/useCustomFilter';
 
 export default function PizzaList(props){
 
@@ -12,10 +13,14 @@ export default function PizzaList(props){
     const {categories, sort, search} = useSelector(store => store.filter)
     
     const dispatch = useDispatch()
+
+    const filter = useCustomFilter()
+    const {category} = filter.getAllParams()
+
     useEffect(()=>{
         dispatch(
             fetchPizzas({            
-                category: categories.current.id,
+                category: category,
                 sortBy: sort.currentVariant.sort,
                 order: sort.currentVariant.direction,
                 search: search.value,
@@ -23,7 +28,7 @@ export default function PizzaList(props){
                 page: dataPizza.page
             })
         )
-    }, [categories, sort, search, dataPizza.queryLimit, dataPizza.page ])
+    }, [category, sort, search, dataPizza.queryLimit, dataPizza.page ])
 
 
     const elementRef = useRef(null);

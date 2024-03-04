@@ -1,19 +1,22 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from "react-redux";
+import useCustomFilter from '@hooks/useCustomFilter';
+
 import 'swiper/css';
-import { useDispatch, useSelector } from "react-redux";
-import { changeCategory } from "../redux/slices/filterSlice";
 
 
 export default function Caregories(){  
 
   let categories = useSelector(store => store.filter.categories )
-  const discpatch = useDispatch()
   
+  const filter = useCustomFilter()
+  const currentParamsFilter = filter.getAllParams()
+
   return (
       <Swiper slidesPerView={'auto'} className="categories">
         <SwiperSlide 
-          className={ categories.current.id == null ? 'category active' : 'category '}
-          onClick={ () => discpatch(changeCategory({id: null, name:'Все'})) }
+          className={ currentParamsFilter.category == null ? 'category active' : 'category '}
+          onClick={ () => filter.delete({name:'category'}) }
         >
           Все
         </SwiperSlide>
@@ -21,8 +24,8 @@ export default function Caregories(){
         {
           categories.list.map( category => 
             <SwiperSlide 
-              className={ categories.current.id == category.id ? 'category active' : 'category '}
-              onClick={ () => discpatch(changeCategory(category)) }
+              className={ currentParamsFilter.category == category.id ? 'category active' : 'category '}
+              onClick={ () => filter.add({category: category.id }) }
               key={category.id}
             >
               {category.name}
