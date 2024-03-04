@@ -5,7 +5,7 @@ import PizzaSkeleton from './PizzaBlock/PizzaSkeleton';
 import gsap from 'gsap';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzas } from '@redux-slices/pizzaSlice';
-import useCustomFilter from '../../hooks/useCustomFilter';
+import useCustomFilter from '@hooks/useCustomFilter';
 
 export default function PizzaList(props){
 
