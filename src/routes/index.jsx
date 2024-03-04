@@ -1,4 +1,4 @@
-import { createBrowserRouter} from "react-router-dom"
+import { Navigate, createBrowserRouter} from "react-router-dom"
 
 // import DefaultLayout from "../views/layouts"
 import { lazy } from "react"
@@ -17,6 +17,10 @@ export default createBrowserRouter([
         children:[
             {
                 path: '/',
+                element: <Navigate to="/home"/>
+            },
+            {
+                path: '/home',
                 element: <Home/>
             },
             {
