@@ -17,7 +17,7 @@ export default function PizzaList(props){
 
     useEffect(()=>{
         dispatch(
-            fetchPizzas({category, sortBy, order, search, page, limit})
+            fetchPizzas({category, sortBy, order, search, page: page || 1, limit: limit || 8 })
         )
     }, [ category, sortBy, order, search, page, limit ])
 
