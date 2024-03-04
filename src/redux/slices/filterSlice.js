@@ -13,7 +13,6 @@ const initialState = {
             { "id": 32, "name": "С пикантным ароматом"},
             { "id": 31, "name": "Божественные" },
         ],
-        current: {id:null, name:"Все"},
     },
     sort: {
         variants : [
@@ -31,9 +30,6 @@ export const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        changeCategory: (state, action) => {
-            state.categories.current = action.payload
-        },
         changeSortVarian: (state, action) => {
             state.sort.currentVariant = action.payload
         },

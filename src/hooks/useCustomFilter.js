@@ -38,5 +38,10 @@ export default function(){
         return this.getAll()
     }
 
+    // customSearchParams.set = function(){
+    //     const currentSearchParam = this.getAll()
+
+    // }
+
     return customSearchParams  
 }

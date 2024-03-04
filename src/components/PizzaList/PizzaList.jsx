@@ -15,20 +15,20 @@ export default function PizzaList(props){
     const dispatch = useDispatch()
 
     const filter = useCustomFilter()
-    const {category} = filter.getAllParams()
+    const {category, sortBy, order} = filter.getAllParams()
 
     useEffect(()=>{
         dispatch(
             fetchPizzas({            
-                category: category,
-                sortBy: sort.currentVariant.sort,
-                order: sort.currentVariant.direction,
+                category,
+                sortBy,
+                order,
                 search: search.value,
                 limit: dataPizza.queryLimit,
                 page: dataPizza.page
             })
         )
-    }, [category, sort, search, dataPizza.queryLimit, dataPizza.page ])
+    }, [category, sortBy, order, search, dataPizza.queryLimit, dataPizza.page ])
 
 
     const elementRef = useRef(null);
