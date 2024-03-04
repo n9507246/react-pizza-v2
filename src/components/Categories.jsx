@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import useCustomFilter from '@hooks/useCustomFilter';
 
 import 'swiper/css';
+import { useEffect } from 'react';
 
 
 export default function Caregories(){  

@@ -10,25 +10,16 @@ import useCustomFilter from '../../hooks/useCustomFilter';
 export default function PizzaList(props){
 
     const dataPizza = useSelector(store=>store.pizzas)
-    const {categories, sort, search} = useSelector(store => store.filter)
-    
     const dispatch = useDispatch()
 
     const filter = useCustomFilter()
-    const {category, sortBy, order} = filter.getAllParams()
+    const {category, sortBy, order, search, page, limit} = filter.getAllParams()
 
     useEffect(()=>{
         dispatch(
-            fetchPizzas({            
-                category,
-                sortBy,
-                order,
-                search: search.value,
-                limit: dataPizza.queryLimit,
-                page: dataPizza.page
-            })
+            fetchPizzas({category, sortBy, order, search, page, limit})
         )
-    }, [category, sortBy, order, search, dataPizza.queryLimit, dataPizza.page ])
+    }, [ category, sortBy, order, search, page, limit ])
 
 
     const elementRef = useRef(null);

@@ -32,11 +32,8 @@ import { useState } from "react"
 
 
 function Vatiant(props){
-    // console.log('currentVariant',props)
-    // console.log('setVariant',setVariant)
+
     const selectVariant = (props) => {
-        // console.log('p', {name:props.variant.name, id:props.variant.id})
-        
         if(props.selectVariant) props.selectVariant(props.variant)
         else console.error("Error component </CustomSelect>. Define props setVariant for change current variant.")
     }

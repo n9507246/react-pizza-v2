@@ -1,12 +1,11 @@
 import classes from './style.module.scss'
 import InputWithDebounce from '../UI/InputWithDebounce';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeSearchValue } from '@redux-slices/filterSlice';
+import useCustomFilter from '@hooks/useCustomFilter';
 
 export default (props) => {
 
-    const search = useSelector(state => state.filter.search)
-    const dispatch = useDispatch() 
+    const filter = useCustomFilter()
+    const {search} = filter.getAllParams()
 
     return (
         <div className={props.className}>
@@ -17,8 +16,11 @@ export default (props) => {
                 </svg>
                 
                 <InputWithDebounce 
-                    currentValue={search.value}
-                    setValue={(value) => { dispatch(changeSearchValue(value))}} 
+                    currentValue={search}
+                    setValue={
+                        (value) => value  ? 
+                            filter.add({search: value} ) : filter.delete({name:'search'})
+                    } 
                     debouce={500} 
                 />
 

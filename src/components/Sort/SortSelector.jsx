@@ -2,7 +2,7 @@ import { useState } from "react"
 import SvgArrow from "./SvgArrov"
 
 export default function SortSelector({ selectedSort, children ,className }){
-    console.log('xxxxx',selectedSort)
+    
     const [openOptions, setOpenOptions ] = useState(false)
     const props_className = className
     

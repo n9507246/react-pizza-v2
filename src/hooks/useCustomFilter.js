@@ -27,7 +27,6 @@ export default function(){
         const currentSearchParam = this.getAll()
         const newSearchParams = {}
         for (let nameSearchParam in currentSearchParam ){
-            console.log(nameSearchParam, name, nameSearchParam === name  )
             if (nameSearchParam !== name ) newSearchParams[nameSearchParam]  = currentSearchParam[nameSearchParam]
         }
         setSearchParams({...newSearchParams})
@@ -38,10 +37,6 @@ export default function(){
         return this.getAll()
     }
 
-    // customSearchParams.set = function(){
-    //     const currentSearchParam = this.getAll()
-
-    // }
 
     return customSearchParams  
 }
