@@ -20,8 +20,6 @@ export const fetchPizzas = createAsyncThunk(
 
 const initialState = {
     list:[],
-    queryLimit: 8,
-    page: 1,
     isLoading: false,
     error: null
 }
@@ -30,9 +28,7 @@ export const pizzaSlice = createSlice({
   name: 'pizzas',
   initialState,
   reducers: {
-    changeCurrentPage: (state, action) => {
-        state.page = action.payload
-    },
+
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -59,6 +55,6 @@ export const pizzaSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {changeCurrentPage} = pizzaSlice.actions
+export const {} = pizzaSlice.actions
 
 export default pizzaSlice.reducer
