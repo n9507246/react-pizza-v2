@@ -21,7 +21,7 @@ export default function Cart(){
                 <CartTitle/>
                 {
                     cartList.length > 0 ? <div className="content__items ">
-                        { cartList.map(item => <CartItem item={item}/>) }
+                        { cartList.map((item, index) => <CartItem item={item} key={index}/>) }
                     </div>
                     : <NotFound title={`Корзина пуста`} message={`Перейдите на главную и выберете товары.`} />
                 }
