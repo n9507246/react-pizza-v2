@@ -32,7 +32,7 @@ import { useState } from "react"
 
 
 function Vatiant(props){
-
+    
     const selectVariant = (props) => {
         if(props.selectVariant) props.selectVariant(props.variant)
         else console.error("Error component </CustomSelect>. Define props setVariant for change current variant.")
@@ -58,7 +58,7 @@ export default function CustomSelect({listOfVariants, currentVariant=listOfVaria
                         variant={variant}
                         isSelect={currentVariant.name === variant.name}
                         selectVariant={setVariant}
-                        key={variant.id} />
+                        key={variant.id} /> 
                 )
             }
         </ul>

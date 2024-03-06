@@ -38,7 +38,12 @@ export default function PizzaList(props){
         <>
             <div  ref={elementRef}  {...props}>    
                 {
-                    dataPizza.list.map( pizzaData => <PizzaBlock className='col' data={pizzaData} key={pizzaData.id}/>)                        
+                    dataPizza.list.map( 
+                        pizzaData => <PizzaBlock className='col' 
+                            data={pizzaData} 
+                            key={pizzaData.id}
+                        />
+                    )                        
                 }  
             </div>
 

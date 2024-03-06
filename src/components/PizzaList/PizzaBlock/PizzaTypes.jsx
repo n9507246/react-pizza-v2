@@ -1,13 +1,14 @@
-import MySelect from "@UI/MySelect"
+import CustomSelect from "@UI/CustomSelect"
 
 
-export default function PizzaTypes ({types}) {
 
-    const variatsTypes = types.map(
-        (type, index ) => { 
-            return { name:type, id:index } 
-        }
+export default function PizzaTypes ({types,currentType,setType}) {
+
+    return(  
+        <CustomSelect 
+            listOfVariants={types} 
+            currentVariant={currentType}
+            setVariant={setType}
+        />
     )
-
-    return <MySelect variants={variatsTypes}/>
 }
