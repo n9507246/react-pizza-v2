@@ -6,7 +6,10 @@ export default function (props) {
       <h1>
         <span>😕</span>
         <br />
-        Ничего не найдено
+        {
+          props.title ? <span>{props.title}</span> : <span>Ничего не найдено</span>
+        }
+        
       </h1>
       <p className={styles.description}>
         {

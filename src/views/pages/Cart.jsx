@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import { useEffect } from 'react'
+import { useSelector } from "react-redux"
+import NotFound from "../../components/NotFound"
 function CartTitle(){
     return(
         <div className="cart__top">
@@ -24,20 +26,21 @@ function CartTitle(){
     )
 }
 
-function CartItem(){
+function CartItem({item}){
+    const {data, value} = item
     return(
         <div className="cart__item">
             <div className="cart__item-data">
                 <div className="cart__item-img">
                     <img
                     className="pizza-block__image"
-                    src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                    src={data.imageUrl}
                     alt="Pizza"
                     />
                 </div>
                 <div className="cart__item-info">
-                    <h3>Сырный цыпленок табака очень вкусный</h3>
-                    <p>тонкое тесто, 26 см.</p>
+                    <h3>{data.title}</h3>
+                    <p>{data.type.name}, {`${data.size.value} cм.`} </p>
                 </div>
             </div>
             <div className="cart__controll">
@@ -49,7 +52,7 @@ function CartItem(){
                         </svg>
 
                     </div>
-                    <b>2</b>
+                    <b>{value}</b>
                     <div className="button button--outline button--circle cart__item-count-plus">
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.92001 3.84V5.76V8.64C5.92001 9.17016 5.49017 9.6 4.96001 9.6C4.42985 9.6 4.00001 9.17016 4.00001 8.64L4 5.76L4.00001 3.84V0.96C4.00001 0.42984 4.42985 0 4.96001 0C5.49017 0 5.92001 0.42984 5.92001 0.96V3.84Z" fill="#EB5A1E"/>
@@ -58,7 +61,7 @@ function CartItem(){
                     </div>
                 </div>
                 <div className="cart__item-price">
-                    <b>770 ₽</b>
+                    <b>{data.price * value}</b>
                 </div>
                 <div className="cart__item-remove">
                     <div className="button button--outline button--circle">
@@ -74,12 +77,13 @@ function CartItem(){
 }
 
 function CartButtom(){
+    const cart = useSelector(state => state.cart)
     useEffect(()=>{window.scrollTo(0,0)}, [])
     return(
         <div className="cart__bottom">
             <div className="cart__bottom-details">
-                <span className='cart__bottom-data-order'> Всего пицц: <b>3 шт.</b> </span>
-                <span className='cart__bottom-data-order'> Сумма заказа: <b>900 ₽</b> </span>
+                <span className='cart__bottom-data-order'> Всего пицц: <b>{cart.valueItemsToCart} шт.</b> </span>
+                <span className='cart__bottom-data-order'> Сумма заказа: <b>{cart.totalPice}  ₽</b> </span>
             </div>
             <div className="cart__bottom-buttons">
                 <Link to='/' className="button button--outline button--add go-back-btn">
@@ -97,22 +101,17 @@ function CartButtom(){
 }
 
 export default function(){
+    const cartList = useSelector(state => state.cart.listItems)
     return(
-        <div 
-            className="cart_content"
-          
-        >
-            <div className="cart"  style={
-                    {   
-                        // display:"flex", 
-                        // alignItems:"center"
-                    }} >
+        <div className="cart_content">
+            <div className="cart" >
                 <CartTitle/>
-                <div className="content__items " >
-                    {/* <div className="content"> */}
-                        { new Array(4).fill(null).map(e => <CartItem/>) }
-                    {/* </div> */}
-                </div>
+                {
+                    cartList.length > 0 ? <div className="content__items ">
+                        { cartList.map(item => <CartItem item={item}/>) }
+                    </div>
+                    : <NotFound title={`Корзина пуста`} message={`Перейдите на главную и выберете товары.`} />
+                }
                 <CartButtom/>
             </div>
         </div>
