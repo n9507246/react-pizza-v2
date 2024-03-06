@@ -6,9 +6,9 @@ export default function PizzaSizes ({sizes,currentSize,setSize}){
 
     const normalizeSizes = []
     for (let numberSize in sizes ) 
-        normalizeSizes.push( { ...sizes[numberSize], name:sizes[numberSize].value } )
+        normalizeSizes.push( { ...sizes[numberSize], name:`${sizes[numberSize].value} см.` } )
 
-    const normalizeCurrentSize = {...currentSize, name:currentSize.value}
+    const normalizeCurrentSize = {...currentSize, name:`${currentSize.value} см.`}
 
     return(  
         <CustomSelect 
