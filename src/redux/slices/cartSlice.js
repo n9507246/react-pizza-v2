@@ -65,10 +65,20 @@ export const cartSlice = createSlice({
             state.listItems = []
             state.totalPice = 0
             state.valueItemsToCart = 0
-        }
+        },
+        removeItem: (state, action ) => {
+            const pizza = state.listItems.find(el =>  JSON.stringify(el.data) ===  JSON.stringify(action.payload.data))
+            
+            state.totalPice = state.totalPice - pizza.data.price * pizza.value
+            state.valueItemsToCart = state.valueItemsToCart - pizza.value
+
+            state.listItems = state.listItems.filter(
+                item => JSON.stringify(item.data) !==  JSON.stringify(pizza.data))
+            
+        } 
     },
 })
 
-export const {addToCart,incValue,decValue, removeAll} = cartSlice.actions
+export const {addToCart,incValue,decValue, removeAll, removeItem} = cartSlice.actions
 
 export default cartSlice.reducer
