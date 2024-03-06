@@ -1,6 +1,4 @@
 import { Navigate, createBrowserRouter} from "react-router-dom"
-
-// import DefaultLayout from "../views/layouts"
 import { lazy } from "react"
 
 const DefaultLayout = lazy(()=>import('@views/layouts/DefaultLayout'))
