@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useEffect } from 'react'
 import { useSelector } from "react-redux"
-import NotFound from "../../components/NotFound"
+import NotFound from "@components/NotFound"
 function CartTitle(){
     return(
         <div className="cart__top">
