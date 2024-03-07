@@ -6,6 +6,7 @@ import CartItem from "./CartItem"
 import CartButtom from "./CartButtom"
 
 import NotFound from "@components/NotFound"
+import CartEmpty from "./CartEmpty"
 
 
 
@@ -16,14 +17,16 @@ export default function Cart(){
     
     return(
         
+
         <div className="cart_content">
             <div className="cart" >
                 <CartTitle/>
                 {
-                    cartList.length > 0 ? <div className="content__items ">
+                    cartList.length > 0  ?  
+                    <div className="content__items ">
                         { cartList.map((item, index) => <CartItem item={item} key={index}/>) }
                     </div>
-                    : <NotFound title={`Корзина пуста`} message={`Перейдите на главную и выберете товары.`} />
+                    : <CartEmpty/>
                 }
                 <CartButtom/>
             </div>
